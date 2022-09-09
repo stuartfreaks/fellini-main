@@ -3,6 +3,32 @@ const { json } = require('express/lib/response');
 const res = require('express/lib/response');
 const app = express();
 
+let myLogger = (req, res, next) => {
+    console.log(req.url);
+    next();
+  };
+  
+  let requestTime = (req, res, next) => {
+    req.requestTime = Date.now();
+    next();
+  };
+  
+  app.use(myLogger);
+  app.use(requestTime);
+  
+  app.get('/', (req, res) => {
+    let responseText = 'Welcome to The Fellini Club!';
+    responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+    res.send(responseText);
+  });
+  
+  app.get('/secreturl', (req, res) => {
+    let responseText = 'This is a secret url with super top-secret content.';
+    responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+    res.send(responseText);
+  
+  });
+
 let felliniFilms = [
     {
       title: '8 1/2',
@@ -129,9 +155,7 @@ let felliniFilms = [
   ];
   
   // GET requests
-  app.get('/', (req, res) => {
-    res.send('Welcome to The Fellini Club!');
-  });
+
   
   app.get('/documentation', (req, res) => {                  
     res.sendFile('public/documentation.html', { root: __dirname });
@@ -141,42 +165,20 @@ let felliniFilms = [
     res.json(felliniFilms);
   });
 
+  // Film Title URL req ****not working yet
+
   app.get("/films/:title", (req, res) => {
     const { title } = req.params;
-    const film = films.find((movie) => film.title === title);
-    if (film) {
-      res.status(200).json(film);
+    const film = films.find((title) => film.title === title);
+    if (title) {
+      res.status(200).json(title);
     } else {
       res.status(400).send("no such film!");
     }
   });
 
 
-app.get("/movies/genre/:genreName", (req, res) => {
-    const { genreName } = req.params;
-    const genre = movies.find((movie) => movie.Genre.Name === genreName).Genre;
-  
-    if (genre) {
-      res.status(200).json(genre);
-    } else {
-      res.status(400).send("no such genre!");
-    }
-  });
-  
-  app.get("/movies/director/:directorName", (req, res) => {
-    const { directorName } = req.params;
-    const director = movies.find(
-      (movie) => movie.Director.Name === directorName
-    ).Director;
-  
-    if (director) {
-      res.status(200).json(director);
-    } else {
-      res.status(400).send("no such director!");
-    }
-  });
-
-  //start replaceing movie with film from here
+  //User Detail Requests 
   
   app.post("/users", (req, res) => {
     const newUser = req.body;
@@ -246,6 +248,7 @@ app.get("/movies/genre/:genreName", (req, res) => {
     }
   });
   
+ 
   
   // listen for requests
   app.listen(8080, () => {
