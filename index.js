@@ -2,6 +2,7 @@ const express = require('express');
 const { json } = require('express/lib/response');
 const res = require('express/lib/response');
 const app = express();
+const morgan = require('morgan');
 
 let myLogger = (req, res, next) => {
     console.log(req.url);
@@ -142,10 +143,18 @@ let felliniMovies = [
   ];
   
   // GET requests
+
+  app.use(morgan('common'));
+
   app.use(express.static('public'));
   
   app.use(myLogger);
   app.use(requestTime);
+
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+  });
   
   app.get('/', (req, res) => {
     let responseText = 'Welcome to The Fellini Club!';
@@ -163,6 +172,8 @@ let felliniMovies = [
   app.get('/movies', (req, res) => {
     res.json(felliniMovies);
   });
+
+  
 
  
 
