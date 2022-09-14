@@ -12,6 +12,8 @@ let myLogger = (req, res, next) => {
     req.requestTime = Date.now();
     next();
   };
+
+  app.use(express.static('public'));
   
   app.use(myLogger);
   app.use(requestTime);
@@ -28,6 +30,8 @@ let myLogger = (req, res, next) => {
     res.send(responseText);
   
   });
+
+ 
 
 let felliniFilms = [
     {
@@ -157,17 +161,13 @@ let felliniFilms = [
   // GET requests
 
   
-  app.get('/documentation', (req, res) => {                  
-    res.sendFile('public/documentation.html', { root: __dirname });
-  });
-  
-  app.get('/films', (req, res) => {
+  app.get('/movies', (req, res) => {
     res.json(felliniFilms);
   });
 
   // Film Title URL req ****not working yet
 
-  app.get("/films/:title", (req, res) => {
+  app.get("/movies/:title", (req, res) => {
     const { title } = req.params;
     const film = films.find((title) => film.title === title);
     if (title) {
