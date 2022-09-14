@@ -33,7 +33,7 @@ let myLogger = (req, res, next) => {
 
  
 
-let felliniFilms = [
+let felliniMovies = [
     {
       title: '8 1/2',
       year: '1963',
@@ -162,14 +162,14 @@ let felliniFilms = [
 
   
   app.get('/movies', (req, res) => {
-    res.json(felliniFilms);
+    res.json(felliniMovies);
   });
 
   // Film Title URL req ****not working yet
 
   app.get("/movies/:title", (req, res) => {
     const { title } = req.params;
-    const film = films.find((title) => film.title === title);
+    const movies = movies.find((title) => movies.title === title);
     if (title) {
       res.status(200).json(title);
     } else {
