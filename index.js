@@ -13,24 +13,7 @@ let myLogger = (req, res, next) => {
     next();
   };
 
-  app.use(express.static('public'));
-  
-  app.use(myLogger);
-  app.use(requestTime);
-  
-  app.get('/', (req, res) => {
-    let responseText = 'Welcome to The Fellini Club!';
-    responseText += '<small>Requested at: ' + req.requestTime + '</small>';
-    res.send(responseText);
-  });
-  
-  app.get('/secreturl', (req, res) => {
-    let responseText = 'This is a secret url with super top-secret content.';
-    responseText += '<small>Requested at: ' + req.requestTime + '</small>';
-    res.send(responseText);
-  
-  });
-
+ 
  
 
 let felliniMovies = [
@@ -159,11 +142,29 @@ let felliniMovies = [
   ];
   
   // GET requests
-
+  app.use(express.static('public'));
   
+  app.use(myLogger);
+  app.use(requestTime);
+  
+  app.get('/', (req, res) => {
+    let responseText = 'Welcome to The Fellini Club!';
+    responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+    res.send(responseText);
+  });
+  
+  app.get('/secreturl', (req, res) => {
+    let responseText = 'This is a secret url with super top-secret content.';
+    responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+    res.send(responseText);
+  
+  });
+
   app.get('/movies', (req, res) => {
     res.json(felliniMovies);
   });
+
+ 
 
   // Film Title URL req ****not working yet
 
@@ -211,8 +212,8 @@ let felliniMovies = [
     let user = users.find((user) => user.id == id);
   
     if (user) {
-      user.favoriteFilm.push(filmTitle);
-      res.status(200).send(`${filmTitle} has been added to user ${id} array!`);
+      user.favoriteMovies.push(movieTitle);
+      res.status(200).send(`${movieTitle} has been added to user ${id} array!`);
     } else {
       res.status(400).send("no such user!");
     }
@@ -224,12 +225,12 @@ let felliniMovies = [
     let user = users.find((user) => user.id == id);
   
     if (user) {
-      user.favoriteFilms = user.favoriteMovies.filter(
+      user.favoriteMovies = user.favoriteMovies.filter(
         (title) => title !== movieTitle
       );
       res
         .status(200)
-        .send(`${filmTitle} has been removed from user ${id} array!`);
+        .send(`${movieTitle} has been removed from user ${id} array!`);
     } else {
       res.status(400).send("no such user!");
     }
