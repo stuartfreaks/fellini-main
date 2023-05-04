@@ -29,7 +29,7 @@ let felliniMovies = [
       title: 'La Dolce Vita',
       year: '1960',
       summary: 'There is pure euphoria and inspiration in this magnificent film that satirises the fashionable world of Swinging Rome in the early 1960s. Fellini’s cinema put Italy at the centre of the world in the way that the Beatles would put Britain there a few years later. Mastroianni is the jaded gossip journalist who hangs around the Via Veneto parasitically hoping for showbusiness stories and despising himself for not having written his novel yet. He falls briefly in love with a visiting American star, played by Anita Ekberg, the pair disporting themselves in the Trevi fountain, and submits to a beating from her enraged husband. Later, he will report on a sighting of the Virgin Mary by two children; the sacred and profane are of equal importance here.',
-      imageURL: 'https://m.media-amazon.com/images/M/MV5BODQ0NzY5NGEtYTc5NC00Yjg4LTg4Y2QtZjE2MTkyYTNmNmU2L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_.jpg'
+      imageURL: 'https://www.filmtv.it/imgbank/GALLERYXL/R202102/la_dolce_vita_poster_usa.jpeg'
     },
     {
       title: 'La Strada',
@@ -72,7 +72,7 @@ let felliniMovies = [
         title: 'Roma',
         year: '1972',
         summary: 'An intensely personal, exuberant and extravagant film that is at once a fantastical autobiography and a kind of episodic, biographical portrait of the film’s leading character: Rome itself, which is presented in a series of semi-connected episodes of its past and present. Roma is also notable for featuring a swansong appearance for the legendary Roman star Anna Magnani. As so often, the movie transforms material that would otherwise be merely autobiographical: a heightened, hallucinatory version of Fellini takes us on a journey into the city, beginning with a spectacular shot of a traffic jam.',
-        imageURL: 'http://www.cgentertainment.it/img/film/21331/LOC1_21331.jpg'
+        imageURL: 'https://www.filmtv.it/imgbank/GALLERYXL/R202110/LOC1_21331.jpg'
     },
     {
         title: 'Il Bidone',
@@ -96,13 +96,13 @@ let felliniMovies = [
         title: 'Orchestra Rehearsal',
         year: '1978',
         summary: 'An interesting, atypical, underrated Fellini film – perhaps closer to Miloš Forman – a political satire about an orchestra that goes on strike.',
-        image: 'https://upload.wikimedia.org/wikipedia/en/5/52/Orchestra_Rehearsal_FilmPoster.jpeg'
+        image: 'https://www.filmtv.it/imgbank/GALLERYXL/R202009/PO.jpg'
     },
     {
         title: 'Fellini\'s Casanova',
         year: '1976',
         summary: 'Donald Sutherland is Casanova who, in keeping with Fellini’s habitual wayward episodic anarchy and surrealism, is shown not really as a great lover, but an absurd and comic figure at the mercy of fate and his urges.',
-        imageURL: 'https://pics.filmaffinity.com/Fellini_s_Casanova-876602958-large.jpg'
+        imageURL: 'https://www.filmtv.it/imgbank/GALLERYXL/R202103/c1-5.jpg'
     },
     {
         title: 'Variety Lights',
